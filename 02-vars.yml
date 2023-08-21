@@ -6,6 +6,8 @@
     - name: URNAME
       prompt: Enter the name      #<--This will be visible prompt without vairable
       private: false
+  vars_files: 
+    - "{{ENV}}.yml"
   tasks: 
   - name: Printing the varriable
     ansible.builtin.debug:
@@ -20,6 +22,10 @@
   - name: Print he prompt variable
     ansible.builtin.debug:
       msg: Name of the person is {{URNAME}}
+
+  - name: This is env specific
+    ansible.builtin.debug:
+      msg: Types of Instance to be used {{INS_TYPE}}
 
 
 
