@@ -6,5 +6,5 @@
       msg: Server flaver is "{{ansible_distribution}}"
 
 - name: Printing the mac address
-    ansible.builtin.debug:
-      msg: Mac Address Of The Node Is "{{ansible_default_ipv4.macaddress}}"     
+  ansible.builtin.debug:
+    msg: Mac Address Of The Node Is "{{ansible_default_ipv4.macaddress}}"     
