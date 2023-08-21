@@ -11,4 +11,4 @@
 
   - name: Declaring the variable
     set_fact
-      ExITCODE: "{{OUT.rc}}" 
+      EXITCODE: "{{OUT.rc}}" 
