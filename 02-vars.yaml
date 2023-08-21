@@ -6,6 +6,25 @@
   - name: Printing the varriable
     ansible.builtin.debug:
       msg: Value of the url is {{URL}}
+  
+  - name: Demo on using local variable
+    ansible.builtin.debug:
+      msg: Value of the url's is {{URL}}
+    vars:
+      URL: task.google.com
+
+
+
+
+# - name: Demo using undelated variable
+#   ansible.builtin.debug:
+#     msg: value of CLIURL is {{URL}}
+
+# PS : If you try to print a variable that is not declared, it will trow an error.
+
+# Varriable Precedence :
+
+### CLI varriable > Loacl varriable > Gloabl varriable
 
       
 
