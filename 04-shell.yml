@@ -15,4 +15,4 @@
   
   - name: Printing the uptime exit code
     ansible.builtin.debug:
-      msg: Uptime exitcode is "{{EXITCODE}}"
+      msg: Uptime exitcode is {{EXITCODE}}
