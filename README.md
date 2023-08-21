@@ -34,4 +34,9 @@ e.g  ansible -i INVENTORY all -e ansible_user=usename -e ansible_password=passwo
 $ansible -i inv all -e ansible_user=centos -e ansible_password=DevOps321 -m shell -a uptime
 
 ..................
+# Note: If you would just like to print a varriable, then enclose the varriable {{varname}} and there is no    single quots concepts.
+# and if the varriable is present in between the string of words, you don't have to enclose them in quotes.
 
+# No two task of a play can have the same name.
+
+.................
