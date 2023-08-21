@@ -1,6 +1,6 @@
 - name: play1
   host: all
   task: 
--name: Print Hai from task1 of play1
+- name: Print Hai from task1 of play1
   ansible.builtin.debug:
     msg: "Hai from task1 of play1"
