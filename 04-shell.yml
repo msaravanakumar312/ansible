@@ -10,7 +10,7 @@
       msg: "{{OUT.stdout}}"  
 
   - name: Declaring the variable
-    set_fact
+    set_fact:
       EXITCODE: "{{OUT.rc}}" 
   
   - name: Printing the uptime exit code
