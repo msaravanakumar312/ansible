@@ -1,7 +1,7 @@
 - name: Installing nginx
   ansible.builtin.package:
-      name: nginx
-      state: present
+    name: nginx
+    state: present
 
 - name: Unarchive a file that needs to be downloaded (added in 2.0)
   ansible.builtin.unarchive:
@@ -15,7 +15,7 @@
     state: absent
 
 - name: Copying the frontend 
-    ansible.builtin.copy:
+  ansible.builtin.copy:
       src: /tmp/frontend-main/static/
       dest: /usr/share/nginx/html/
       remote_src: yes
