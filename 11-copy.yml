@@ -1,5 +1,6 @@
 
 - name: Demo on copy file
+  hosts: all
   become: yes
   tasks:
 
