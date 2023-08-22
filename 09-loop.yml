@@ -1,0 +1,11 @@
+- name: Demo on loop
+  hosts: all
+  tasks:
+    - name: Demo on using loop
+      ansible.builtin.debug:
+        msg: "Value is {{item}}"       ## Item is a key work represent the value in the list
+      loop: 
+        - 100
+        - 300
+        - 500
+        
