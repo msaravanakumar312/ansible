@@ -1,12 +1,12 @@
 - name: Demo on previllege escalltion
   hosts: all
-  become: yes
+  become: yes        ## Previllaege Escalation : Runs the playbook as root user
   tasks: 
-  - name: Check the User ID
-    ansible.builtin.shell: id
-    register: OUT
+    - name: Check the User ID
+      ansible.builtin.shell: id
+      register: OUT
   
-  - name: Printing the user details
-    ansible.builtin.debug
-      msg: "{{OUT}}"
+    - name: Printing the user details
+      ansible.builtin.debug
+        sg: "{{OUT}}"
     
