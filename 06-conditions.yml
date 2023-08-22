@@ -1,7 +1,7 @@
 - name: Demo on conditions
   hosts: all
-  tasks: 
   action: true
+  tasks: 
   - name: Run this when this distribution is CentOS
     ansible.builtin.debug: 
       msg: Welcome To CentOS {{ansible_distribution}}
