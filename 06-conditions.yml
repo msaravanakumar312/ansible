@@ -1,0 +1,25 @@
+- name: Demo on conditions
+  hosts: all
+  tasks: 
+  action: true
+  - name: Run this when this distribution is CentOS
+    ansible.builtin.debug: 
+      msg: Welcome To CentOS {{ansible_distribution}}
+    when: ansible_distribution == "CentOS"
+
+  - name: Run this when this distribution is Ubuntu
+    ansible.builtin.debug: 
+      msg: Welcome To Ubuntu {{ansible_distribution}}
+    when: ansible_distribution == "Ubuntu"
+
+  - name: Run this action
+    ansible.builtin.debug: 
+      msg: Action is true 
+    when: action
+
+
+      
+      
+      # Older version of ansible uses undefined, Latest version as ansible users not defined.
+      # defined, not defined, true, false, succeded, failure all of them are predefined keywords as per the documents.
+      # 
