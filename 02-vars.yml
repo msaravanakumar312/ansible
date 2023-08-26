@@ -5,7 +5,7 @@
   vars_prompt:
     - name: URNAME
       prompt: Enter the name      #<--This will be visible prompt without vairable
-      private: false
+      private: true
   vars_files: 
     - "{{ENV}}.yml"
   tasks: 
