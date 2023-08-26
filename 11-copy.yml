@@ -3,8 +3,7 @@
   hosts: all
   become: yes
   tasks:
-
-  - name: Copying the  file 
-    ansible.builtin.copy:
-      src: systemd.service 
-      dest: /home/centos/systemd.service
+    - name: Copying the  file 
+      ansible.builtin.copy:
+        src: systemd.service 
+        dest: /home/centos/systemd.service
