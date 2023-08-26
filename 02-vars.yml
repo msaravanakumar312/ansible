@@ -7,7 +7,7 @@
       prompt: Enter the name      #<--This will be visible prompt without vairable
       private: true
   vars_files: 
-    - "{{ENV}}.yml"
+    - {{ENV}}.yml
   tasks: 
   - name: Printing the varriable
     ansible.builtin.debug:
