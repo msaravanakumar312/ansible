@@ -7,3 +7,9 @@
       ansible.builtin.copy:
         src: systemd.service 
         dest: /home/centos/systemd.service
+
+
+- name: Copying the proxy file
+  ansible.builtin.copy:
+      src: roboshop.conf
+      dest: /etc/nginx/default.d/roboshop.conf
