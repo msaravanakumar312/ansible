@@ -3,7 +3,7 @@
     name: nginx
     state: present
 
-- name: Unarchive a file that needs to be downloaded (added in 2.0)
+- name: Download and Extract frontend
   ansible.builtin.unarchive:
     src: https://github.com/stans-robot-project/frontend/archive/main.zip
     dest: /tmp
@@ -31,6 +31,3 @@
     state: restarted
     enabled: yes
     daemon_reload: yes
-
-- name: Configuring Service Name
-  ansible.builtin.shell: set-hostname {{COMPONENT}}-{{ENV}}
