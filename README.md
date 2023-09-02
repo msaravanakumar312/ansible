@@ -40,3 +40,6 @@ $ansible -i inv all -e ansible_user=centos -e ansible_password=DevOps321 -m shel
 # No two task of a play can have the same name.
 
 .................
+
+#Ansible roles:
+.........
