@@ -18,7 +18,10 @@
       msg: Action is true 
     when: action
 
-  
+  - name: Run this task when the action variable is declared
+    ansible.builtin.debug: 
+      msg: action variable is declared
+    when: action is not defined
 
       
       
