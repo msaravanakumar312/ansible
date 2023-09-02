@@ -20,6 +20,14 @@
     dest: /tmp
     remote_src: yes
 
+- name: Configuring the {{COMPONENT}} Schema
+  community.mongodb.mongodb_shell:
+    file: "/tmp/mongodb-main/{{item}}.js"
+    idempotent: yes
+  loop:
+    - users
+    - catalogue
+
 - name: Starting {{COMPONENT}}
   systemd:
     name: mongod
