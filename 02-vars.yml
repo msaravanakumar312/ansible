@@ -34,11 +34,14 @@
 #   ansible.builtin.debug:
 #     msg: value of CLIURL is {{URL}}
 
-# PS : If you try to print a variable that is not declared, it will trow an error.
+# PS : If you try to print a variable that is not declared, it will throw an error.
 
 # Varriable Precedence :
 
 ### CLI varriable > Loacl varriable > Gloabl varriable
+#Compare to global varriable, local varriables is higher priority.
+#And Compare to local varriable and global varriable, the command line varriable is higher priority.
+
 
       
 
