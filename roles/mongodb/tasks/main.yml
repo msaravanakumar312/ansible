@@ -25,7 +25,7 @@
     file: "/tmp/mongodb-main/{{item}}.js"
     idempotent: yes
   loop:
-    - users
+    - user
     - catalogue
 
 - name: Starting {{COMPONENT}}
