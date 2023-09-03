@@ -13,6 +13,9 @@ redis-dev.roboshop.internal
 [user]
 user-dev.roboshop.internal
 
+[cart]
+cart-dev.roboshop.internal
+
 
 
 
