@@ -20,7 +20,9 @@
     src: /var/log/mysqld.log
   register: pwd_log
 
-
+- name: Extracting the root password
+  ansible.builtin.set_fact:
+    DEFAULT_PASSWORD: "{{ pwd_log['content'] | b64decode | regex_findal(''.*temporary password.*') | join (' ') | split (' ') | last}}"
 
 - name: Configuring Name
   ansible.builtin.include_role:
