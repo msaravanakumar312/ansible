@@ -32,7 +32,7 @@
 
 - name: Generating artifacts with npm install
   community.general.npm:
-    path: /home/{{APPUSER}}/{{COMPONENT}}
+    path: /home/{{APPUSER}}/{{COMPONENT}}/
 
 - name: Copying the systemd file
   ansible.builtin.template:
