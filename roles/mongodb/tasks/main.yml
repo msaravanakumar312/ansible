@@ -14,26 +14,25 @@
     regexp: '127.0.0.1'
     replace: '0.0.0.0'
 
-- name: Download and extracting the frontend
-  ansible.builtin.unarchive:
-    src: https://github.com/stans-robot-project/mongodb/archive/main.zip
-    dest: /tmp
-    remote_src: yes
-
-- name: Configuring the {{COMPONENT}} Schema
-  community.mongodb.mongodb_shell:
-    file: "/tmp/mongodb-main/{{item}}.js"
-    idempotent: yes
-  loop:
-    - user
-    - catalogue
-
 - name: Starting {{COMPONENT}}
   systemd:
     name: mongod
     state: restarted
     enabled: yes
-    daemon_reload: yes
+
+- name: Download and extracting the mongodb
+  ansible.builtin.unarchive:
+    src: https://github.com/stans-robot-project/mongodb/archive/main.zip
+    dest: /tmp
+    remote_src: yes
+
+- name: Injecting the {{COMPONENT}} Schema
+  community.mongodb.mongodb_shell:
+    file: "/tmp/mongodb-main/{{item}}.js"
+    idempotent: yes
+  loop:
+    - users
+    - catalogue
 
 - name: Confuguring Service name
   ansible.builtin.shell: set-hostname {{COMPONENT}}-{{ENV}}
