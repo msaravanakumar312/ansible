@@ -24,6 +24,10 @@
   ansible.builtin.set_fact:
     DEFAULT_PASSWORD: "{{ pwd_log['content'] | b64decode | regex_findal(''.*temporary password.*') | join (' ') | split (' ') | last}}"
 
+- name: Printing
+  ansible.builtin.debug:
+    msg: value is {{DEFAULT_PASSWORD}}
+
 - name: Configuring Name
   ansible.builtin.include_role:
     name: common
