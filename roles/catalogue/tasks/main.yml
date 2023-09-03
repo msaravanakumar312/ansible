@@ -30,6 +30,22 @@
     dest: /home/{{APPUSER}}/{{COMPONENT}}/
     remote_src: yes
 
+- name: Generating artifacts with npm install
+  community.general.npm:
+    path: /home/{{APPUSER}}/{{COMPONENT}}
+
+- name: Copying the systemd file
+  ansible.builtin.template:
+    src: systemd.service
+    dest: /home/{{APPUSER}}/{{COMPONENT}}/
+
+- name: Starting {{COMPONENT}}
+  systemd:
+    name: "{{COMPONENT}}"
+    state: restarted
+    enabled: yes
+    daemon_reload: yes
+
 - name: Confuguring Service name
   ansible.builtin.shell: set-hostname {{COMPONENT}}-{{ENV}}
 
