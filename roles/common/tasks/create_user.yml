@@ -6,5 +6,5 @@
 
 - name: Printing the variable
   ansible.builtin.debug:
-    msg: Value of the OUT is {{USERINFO}}
+    msg: Value of the userinfo is {{USERINFO}}
 
