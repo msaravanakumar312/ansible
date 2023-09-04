@@ -15,24 +15,29 @@
     state: restarted
     enabled: yes
 
-- name: Fetch the log file from remote node
-  ansible.builtin.slurp:
-    src: /var/log/mysqld.log
-  register: pwd_log
+#Block and rescue task will works togather : If any task in the block fails, then rescue tasks will excuted.
+- name: verifying the password
+  block:
+    - name: Fetch Mysql Version
+      community.mysql.mysql_info:
+        login_user: root
+        login_password: Roboshop@1
+        filter: Version
+  rescue:
+    - name: Fetch the log file from remote node
+      ansible.builtin.slurp:
+        src: /var/log/mysqld.log
+      register: pwd_log
 
-- name: Extracting the root password
-  ansible.builtin.set_fact:
-    DEFAULT_PASSWORD: "{{ pwd_log['content'] | b64decode | regex_findall('.*temporary password.*')| join (' ') | split (' ') | last }}"
+    - name: Extracting the root password
+      ansible.builtin.set_fact:
+        DEFAULT_PASSWORD: "{{ pwd_log['content'] | b64decode | regex_findall('.*temporary password.*')| join (' ') | split (' ') | last }}"
 
-- name: Printing
-  ansible.builtin.debug:
-    msg: value is {{DEFAULT_PASSWORD}}
+    - name: Resetting Default root password of {{COMPONENT}}
+      ansible.builtin.shell: echo -n "ALTER USER 'root'@'localhost' IDENTIFIED BY '{{ROOT_PASSWORD}}';" | mysql --connect-expired-password -u root -p$DEFAULT_PASSWORD 
 
-- name: Resetting Default root password of {{COMPONENT}}
-  ansible.builtin.shell: echo -n "ALTER USER 'root'@'localhost' IDENTIFIED BY 'Roboshop@1'" | mysql --connect-expired-password -u root -p$DEFAULT_PASSWORD 
-
-- name: Removing {{COMPONENT}} password validate plugin
-  ansible.builtin.shell: echo "uninstall plugin validate_password" | mysql -u root -pRoboshop@1
+    - name: Removing {{COMPONENT}} password validate plugin
+      ansible.builtin.shell: echo "uninstall plugin validate_password;" | mysql -u root -pRoboshop@1
 
 
 - name: Configuring Name
