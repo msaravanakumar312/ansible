@@ -8,3 +8,7 @@
   ansible.builtin.debug:
     msg: Value of the userinfo is {{USERINFO}}
 
+- name: Installing App dependencies
+  ansible.builtin.pip:
+    requirements: /home/{{APPUSER}}/{{COMPONENT}}/requirements.txt
+    executable: pip3
