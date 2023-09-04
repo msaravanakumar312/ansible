@@ -41,5 +41,23 @@ $ansible -i inv all -e ansible_user=centos -e ansible_password=DevOps321 -m shel
 
 .................
 
-#Ansible roles:
+# When to use ansible Push and Pull?
+
+..........
+1> when your infrastructure is static, then we will host an ANSIBLE server and will target configuration management on all the nodes from your ansible server.
+
+2>when your infrastructure is not static, which mean on cloud we often scale out and down the infra, in this case maintaining the inventory is quite challenging and to avoid this , what we do is, as a part of the BOOTSTRAPPING, we will let the ansible-Pull command to run.
+
+Points to be notes when using Pull:
+
+* Ensure your nodes running ansible has ansible installed.
+* Pull only work from GIT.
+
 .........
+
+# How to use PULL?
+.......
+
+
+............
+
